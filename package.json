@@ -1,0 +1,26 @@
+{
+  "name": "securevault",
+  "private": true,
+  "description": "Educational secure vault demo: vulnerable vs fixed builds with automated security tests",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "concurrently -n server,client \"npm run start -w server\" \"npm run preview -w client\"",
+    "test": "cross-env VULNERABLE_MODE=false npm run test:api -w server && cross-env VULNERABLE_MODE=false playwright test",
+    "test:vulnerable": "node scripts/run-vulnerable-tests.mjs",
+    "test:api": "npm run test:api -w server",
+    "test:e2e": "playwright test"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

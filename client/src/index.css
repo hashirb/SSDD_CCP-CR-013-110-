@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-vault-950 text-slate-100 min-h-screen font-sans;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.22), transparent),
+    linear-gradient(180deg, #0a0b12 0%, #0f111a 100%);
+}
+
+::selection {
+  @apply bg-vault-accent/40 text-white;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-300 via-fuchsia-200 to-violet-400;
+  }
+}
